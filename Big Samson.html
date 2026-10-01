@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiệm Vẽ Nhà Kaz</title>
+<link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2229%22%20fill%3D%22%23F279A6%22%20stroke%3D%22%233b2420%22%20stroke-width%3D%224%22%2F%3E%3Cg%20transform%3D%22rotate%2845%2032%2032%29%22%20stroke%3D%22%233b2420%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%2226%22%20y%3D%2211%22%20width%3D%2212%22%20height%3D%2229%22%20fill%3D%22%2359D9CC%22%2F%3E%3Cpath%20d%3D%22M26%2040h12l-6%2013z%22%20fill%3D%22%23FFF7F1%22%2F%3E%3Cpath%20d%3D%22M29.4%2048h5.2L32%2053z%22%20fill%3D%22%233b2420%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%2226%22%20y%3D%227%22%20width%3D%2212%22%20height%3D%226%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<meta name="theme-color" content="#F279A6">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Be+Vietnam+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{--clay:#C37966;--mint:#59D9CC;--pink:#F279A6;--ink:#3b2420;--cream:#FFF7F1}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.65 "Be Vietnam Pro",system-ui,sans-serif;color:var(--ink);background-color:var(--cream)}
+
+h1,h2,h3{font-family:"Baloo 2","Trebuchet MS",sans-serif;line-height:1.1;margin:0 0 .4em}
+	h1{font-size:clamp(2.6rem,8vw,4.6rem);font-weight:800} 
+	h2{font-size:2rem} 
+	h3{font-size:1.3rem}
+	a{color:var(--ink)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 18px}
+
+/* Thanh menu: trong suốt trên ảnh, đổi thành nền khi cuộn */
+nav{position:fixed;top:0;left:0;right:0;z-index:10;transition:background .3s,box-shadow .3s}
+nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;padding-top:12px;padding-bottom:12px}
+nav a{color:#fff;text-decoration:none;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+nav .logo{font:800 1.6rem "Baloo 2",sans-serif;margin-right:auto}
+nav.solid{background:rgba(255,247,241,.94);backdrop-filter:blur(8px);box-shadow:0 3px 0 var(--mint)}
+nav.solid a{color:var(--ink);text-shadow:none}
+nav a.on{border-bottom:3px solid var(--pink)}
+
+.hero{min-height:82vh;display:flex;align-items:flex-end;color:#fff;background-size:cover;background-position:center;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(59,36,32,.35),rgba(59,36,32,.65))}
+.hero .wrap{position:relative;width:100%;padding-bottom:64px;padding-top:120px}
+.hero h1{text-shadow:0 2px 12px rgba(0,0,0,.4);animation:up .8s both;margin-bottom:0}
+.hero p{max-width:34em;font-size:1.15rem;animation:up .8s .15s both}
+.bar{height:10px;width:min(560px,80%);background:var(--pink);margin:4px 0 10px;border-radius:5px;animation:up .8s both}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}.ld-ring{animation:spin .9s linear infinite!important}}
+.pagehead{padding:110px 0 30px;background:linear-gradient(120deg,var(--clay),var(--pink));color:#fff}
+.pagehead h1{font-size:clamp(2rem,6vw,3rem);margin:0;text-shadow:0 2px 10px rgba(0,0,0,.3)}
+
+section{padding:36px 0}
+.btn{display:inline-block;background:var(--pink);color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:9px 22px;font:600 1rem "Be Vietnam Pro",sans-serif;cursor:pointer;text-decoration:none;margin:4px 6px 4px 0;box-shadow:3px 3px 0 var(--ink)}
+.btn:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink)}
+.btn.mint{background:var(--mint)} .btn.small{padding:3px 14px;font-size:.9rem;box-shadow:2px 2px 0 var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:#fff;border:2px solid var(--ink);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:5px 5px 0 var(--mint)}
+.grid .card:nth-child(even){box-shadow:5px 5px 0 var(--pink)}
+.card.cat{padding:0;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;margin:0}
+.cat .pic{height:150px;background:var(--clay) center/cover;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.cat .txt{padding:12px 16px 16px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.cat .txt h3{margin-bottom:4px;max-width:100%;font-size:1.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cat .muted{margin-bottom:12px;max-width:100%;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cat .tag{margin-top:auto}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.muted{color:#7a5a52;font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{border:2px solid var(--ink);border-radius:999px;padding:2px 14px;background:#fff;cursor:pointer;font:inherit;color:var(--ink)}
+.chip.on{background:var(--mint)}
+.price{font:800 1.4rem "Baloo 2",sans-serif;color:var(--clay)}
+.tag{display:inline-block;background:var(--mint);border:2px solid var(--ink);border-radius:8px;padding:0 10px;font-weight:600}
+label{display:block;margin:14px 0 4px;font-weight:600}
+input,select,textarea{width:100%;padding:10px;border:2px solid var(--ink);border-radius:10px;background:#fff;font:inherit;color:var(--ink)}
+input:focus,select:focus,textarea:focus,.btn:focus-visible,a:focus-visible,.chip:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.notice{background:#fff0d6;border:2px dashed var(--clay);border-radius:12px;padding:12px 16px;margin:12px 0}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.gallery img{width:100%;height:170px;object-fit:cover;border:2px solid var(--ink);border-radius:12px}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:#fff}
+th,td{border:2px solid var(--ink);padding:8px;text-align:left;vertical-align:top;font-size:.92rem}
+/* Form đặt vẽ: ô mô tả cố định kích thước, ô upload ảnh */
+.card.form{max-width:820px;margin:0 auto}
+textarea{resize:none;height:150px;overflow-y:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+input.sr{position:absolute;width:1px;height:1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0)}
+.drop{display:block;margin:0;padding:18px 14px;text-align:center;border:2px dashed var(--clay);border-radius:12px;background:#fff9f4;cursor:pointer;font-weight:600}
+.drop:hover,.drop.over,.drop:focus-within{background:#e8fbf8;border-color:var(--ink)}
+.drop small{display:block;font-weight:400;color:#7a5a52}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;margin-top:10px}
+.thumbs:empty{display:none}
+.thumb{position:relative}
+.thumb img{display:block;width:100%;height:96px;object-fit:cover;border:2px solid var(--ink);border-radius:10px}
+.thumb button{position:absolute;top:-8px;right:-8px;width:26px;height:26px;border-radius:50%;border:2px solid var(--ink);background:var(--pink);color:var(--ink);font:700 14px/1 sans-serif;cursor:pointer;padding:0}
+
+/* Màn hình loading */
+.loader{position:fixed;inset:0;z-index:100;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff;
+  opacity:0;visibility:hidden;transition:opacity .28s ease,visibility 0s linear .28s}
+.loader.on{opacity:1;visibility:visible;transition:opacity var(--fade-in,.18s) ease,visibility 0s}
+.loader::before{content:"";position:absolute;inset:-220px;
+  background:repeating-linear-gradient(135deg,#fff 0 40px,var(--mint) 40px 80px,var(--pink) 80px 120px);animation:slide 3s linear infinite}
+@keyframes slide{to{transform:translate(84.85px,84.85px)}}
+.ld-box{position:relative;width:190px;height:190px;border-radius:50%;background:var(--cream);border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);display:grid;place-items:center}
+.ld-ring{position:absolute;inset:8px;border-radius:50%;border:8px solid #ecdcd4;border-top-color:var(--pink);border-right-color:var(--mint);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ld-pic{position:relative;width:124px;height:124px;border-radius:50%;overflow:hidden;background:#fff;border:3px solid var(--ink);display:grid;place-items:center;font-size:3.4rem}
+.ld-pic img{width:100%;height:100%;object-fit:contain}
+footer{border-top:3px solid var(--mint);background:#fff;padding:22px 0;color:#7a5a52;font-size:.92rem}
+</style>
+</head>
+<body>
+
+<div class="loader on" id="loader" role="status" aria-label="Đang tải">
+  <div class="ld-box"><div class="ld-ring"></div><div class="ld-pic" id="ldPic"></div></div>
+</div>
+<noscript><style>.loader{display:none}</style></noscript>
+
+<nav id="nav"><div class="wrap">
+  <a class="logo" href="#/" id="siteName"></a>
+  <a href="#/tai-lieu" data-r="tai-lieu">Tài liệu</a>
+  <a href="#/bang-gia" data-r="bang-gia">Bảng giá</a>
+  <a href="#/dat-don" data-r="dat-don">Đặt vẽ</a>
+  <a href="#/tai-khoan" data-r="tai-khoan" id="authLink">Đăng nhập</a>
+</div></nav>
+<main id="app"></main>
+<footer><div class="wrap" id="footerText"></div></footer>
+
+<script>
+/* ==========================================================
+   PHẦN CHỈNH SỬA - chỉ cần sửa chữ trong dấu nháy ""
+   ========================================================== */
+const SITE = {
+  name: "Tiệm Vẽ Nhà Kaz",
+  zalo: "0819088552",                        // số Zalo, chỉ gồm số
+  email: "watsonanpocky@gmail.com",
+  facebook: "https://www.facebook.com/chaser.no.44/",    // để "" nếu không dùng
+  favicon: "SB29_RMB.jpg"   // logo trên tab trình duyệt. "" = icon mặc định. Hoặc ghi "favicon.png" (ảnh vuông 256x256, PNG nền trong suốt) / dán link ảnh
+};
+
+// Ảnh nền đầu trang. Dán link ảnh, hoặc để file "hero.jpg" cạnh index.html rồi ghi image: "hero.jpg"
+// Để image: "" thì dùng nền gradient theo màu chủ đạo.
+const HERO = {
+  image: "hero.jpg",
+  title: "Tiệm Vẽ Nhà Kaz",
+  tagline: "Tài liệu học tập miễn phí. Nhận vẽ kỹ thuật theo đơn."
+};
+
+// Màn hình loading. image: ảnh nhân vật (PNG nền trong suốt, nên vuông, vd 400x400) - dán link hoặc tên file, vd "oc.png".
+// Để image: "" thì hiện emoji. Đơn vị mili giây (1000 = 1 giây): first = thời gian hiện khi mở/F5 trang,
+// page = thời gian hiện rõ khi chuyển trang, fade = thời gian mờ dần vào lúc chuyển trang.
+const LOADER = { image: "SB29_RMB.jpg", emoji: "✏️", first: 1000, page: 250, fade: 180 };
+
+// Màu chủ đạo (đổi ở đây là cả web đổi theo)
+const COLORS = { clay: "#C37966", mint: "#59D9CC", pink: "#F279A6", ink: "#3b2420", cream: "#FFF7F1" };
+
+
+/* Ảnh minh hoạ vẽ sẵn (SVG) cho từng mục - không cần sửa.
+   Muốn dùng ảnh thật: dán link/tên file vào image: ở CATEGORIES bên dưới, ảnh thật sẽ nằm đè lên ảnh vẽ sẵn. */
+const ART = (() => {
+  const { clay, mint, pink, ink, cream } = COLORS;
+  const u = s => "data:image/svg+xml," + encodeURIComponent(s);
+  const G = `stroke="${ink}" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"`;
+  return {
+    vekt: u(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240"><rect width="360" height="240" fill="${mint}"/>
+<g ${G}><rect x="55" y="32" width="250" height="170" rx="6" fill="${cream}"/>
+<path d="M150 62l43 25-43 25-43-25z" fill="${pink}"/><path d="M107 87l43 25v50l-43-25z" fill="${clay}"/><path d="M150 112l43-25v50l-43 25z" fill="#fff"/>
+<path d="M215 62v100M209 62h12M209 162h12" stroke-width="2.5" fill="none"/>
+<rect x="240" y="70" width="42" height="42" fill="none" stroke-width="3"/><rect x="240" y="126" width="42" height="42" fill="none" stroke-width="3"/>
+<path d="M20 216V140l88 76z" fill="#FFE066"/><path d="M36 204v-38l42 38z" fill="${mint}" stroke-width="3"/>
+<g transform="translate(232 224) rotate(-28)"><path d="M0 0l22-9v18z" fill="${cream}"/><path d="M0 0l8-3.3v6.6z" fill="${ink}" stroke-width="2"/><rect x="22" y="-9" width="76" height="18" fill="#FFE066"/><rect x="98" y="-9" width="14" height="18" rx="3" fill="${pink}"/></g></g></svg>`),
+
+    sinhly: u(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240"><rect width="360" height="240" fill="#FFE7A3"/>
+<g ${G}><circle cx="292" cy="56" r="22" fill="#FFC93C"/>
+<path d="M292 26v-10M292 86v10M262 56h-10M322 56h10M271 35l-6-6M313 35l6-6M271 77l-6 6M313 77l6 6"/>
+<path d="M64 62c0 0-16 22-16 34a16 16 0 0 0 32 0c0-12-16-34-16-34z" fill="${mint}" stroke-width="3"/>
+<g transform="translate(40 96) scale(.7)"><path d="M64 62c0 0-16 22-16 34a16 16 0 0 0 32 0c0-12-16-34-16-34z" fill="${mint}" stroke-width="4"/></g>
+<path d="M90 226h180"/><path d="M132 172h96l-10 52h-76z" fill="${clay}"/>
+<path d="M180 158C180 128 174 100 180 62" fill="none" stroke-width="5"/>
+<path d="M179 122C142 128 116 104 112 80c34-4 63 12 67 42z" fill="#4CC38A"/><path d="M178 96C216 102 246 80 250 54c-36-4-68 14-72 42z" fill="#4CC38A"/><path d="M180 64C164 50 166 34 180 22c14 12 16 28 0 42z" fill="#4CC38A"/>
+<path d="M179 122C158 112 136 100 118 84M178 96C200 88 226 74 244 58" fill="none" stroke-width="2.5"/>
+<rect x="124" y="158" width="112" height="18" rx="5" fill="#a95f4d"/></g></svg>`),
+
+    triet: u(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240"><rect width="360" height="240" fill="${pink}"/>
+<g ${G}><rect x="90" y="175" width="180" height="30" rx="4" fill="${cream}"/><path d="M112 175v30M120 175v30" stroke-width="3"/>
+<rect x="106" y="145" width="150" height="30" rx="4" fill="${mint}"/><path d="M226 145v30M234 145v30" stroke-width="3"/>
+<rect x="122" y="115" width="116" height="30" rx="4" fill="${clay}"/><path d="M144 115v30M152 115v30" stroke-width="3"/>
+<path d="M180 26v-10M142 38l-7-7M218 38l7-7M134 66h-10M226 66h10"/>
+<circle cx="180" cy="66" r="30" fill="#FFE066"/><rect x="167" y="94" width="26" height="15" rx="3" fill="${cream}"/>
+<path d="M168 70l6-10 6 10 6-10 6 10" fill="none" stroke-width="2.5"/>
+<circle cx="302" cy="186" r="22" fill="#FFE066"/><text x="302" y="195" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="${ink}" stroke="none">$</text></g></svg>`),
+
+    khac: u(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240"><rect width="360" height="240" fill="#F6D3C7"/>
+<g ${G}><rect x="110" y="40" width="140" height="170" rx="8" fill="${cream}"/>
+<path d="M104 75h14M104 105h14M104 135h14M104 165h14M104 195h14" stroke-width="6"/>
+<rect x="134" y="62" width="70" height="18" rx="4" fill="${pink}" stroke-width="3"/>
+<path d="M134 104h100M134 128h100M134 152h100M134 176h70" stroke="#d8c3ba" stroke-width="3"/>
+<g transform="translate(66 108) rotate(14)"><rect x="-9" y="0" width="18" height="88" fill="${mint}"/><path d="M-9 88h18l-9 24z" fill="${cream}"/><path d="M-3.6 101.5h7.2L0 112z" fill="${ink}" stroke-width="2"/><rect x="-9" y="-16" width="18" height="16" rx="3" fill="${pink}"/></g>
+<path d="M285 34l7 15 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2z" fill="#FFE066" stroke-width="3.5"/>
+<path d="M285 180c-12-13-28 5-13 20l13 12 13-12c15-15-1-33-13-20z" fill="${pink}" stroke-width="3.5"/></g></svg>`)
+  };
+})();
+
+// Các mục trên trang chủ. image: link ảnh thật (để "" thì dùng ảnh vẽ sẵn art). Nếu link ảnh lỗi, ảnh art sẽ hiện thay thế.
+
+const CATEGORIES = [
+  { name: "Vẽ kỹ thuật", art: ART.vekt,           					emoji: "📐", image: "VKT.jpg", 		desc: "Đề cương, bài tập mẫu, hình chiếu" },
+  { name: "Sinh học", art: ART.sinhly, 								emoji: "🌱", image: "Biology.jpg", 	desc: "Tóm tắt, câu hỏi ôn tập" },
+  { name: "Triết học - KTCT", art: ART.triet, 						emoji: "📚", image: "Mambo.jpg", 	desc: "Đề cương, câu hỏi thi" },
+  { name: "Các môn học khác", art: ART.khac,      					emoji: "✏️", image: "Wit.jpg", 		desc: "Tài liệu linh tinh" },
+];
+
+// Thêm tài liệu: copy nguyên 1 dòng { ... }, sửa chữ, nhớ dấu phẩy cuối dòng.
+// subject phải TRÙNG TÊN với một mục ở CATEGORIES. link: Google Drive (chia sẻ "Bất kỳ ai có đường liên kết")
+const DOCS = [
+  { title: "Đề cương Vẽ kỹ thuật 1",          subject: "Vẽ kỹ thuật",  year: "2024", link: "https://drive.google.com/" },
+  { title: "Bài tập mẫu hình chiếu trục đo",  subject: "Vẽ kỹ thuật",  year: "2024", link: "https://drive.google.com/" },
+  { title: "Tóm tắt Sinh lý thực vật",        subject: "Sinh lý thực vật", year: "2024", link: "https://drive.google.com/" },
+  { title: "Câu hỏi ôn Triết học",            subject: "Triết học - KTCT", year: "2024", link: "https://drive.google.com/" },
+];
+
+// Bảng giá. Muốn đổi giá chỉ cần sửa dòng price.
+const PRICES = [
+  { group: "Vẽ tay", items: [
+    { name: "Khổ A4", price: "20.000đ – 40.000đ", note: "Tuỳ bài" },
+    { name: "Khổ A3", price: "35.000đ – 60.000đ", note: "Tuỳ bài hoặc thương lượng" },
+    { name: "Khổ A0 / bài tập lớn", price: "200.000đ – 300.000đ", note: "Tuỳ đơn hoặc thương lượng. Xem ảnh mẫu bên dưới" },
+  ]},
+  { group: "Đáp án (file hướng dẫn tự vẽ)", items: [
+    { name: "Bài dễ",        price: "10.000đ – 20.000đ", note: "" },
+    { name: "Bài trung bình", price: "15.000đ – 25.000đ", note: "" },
+    { name: "Bài khó",       price: "Cao hơn", note: "Báo giá theo từng bài" },
+  ]},
+];
+const SAMPLES = [ /* ảnh mẫu bài vẽ: dán link ảnh hoặc tên file, ví dụ "mau1.jpg", "mau2.jpg" */ ];
+const KINDS = ["Vẽ tay A4", "Vẽ tay A3", "Vẽ tay A0 / bài tập lớn", "Đáp án (hướng dẫn tự vẽ)", "Khác"];
+const STATUSES = ["Mới", "Đang vẽ", "Đã xong", "Huỷ"];
+
+/* ---- Đăng nhập & lưu đơn (Firebase). Chưa điền thì web vẫn chạy, chỉ tắt tính năng đăng nhập ---- */
+const FIREBASE = { apiKey: "", authDomain: "", projectId: "", appId: "" };
+const OWNER_EMAIL = "watsonanpocky@gmail.com";   // tài khoản của BẠN, được vào trang quản lý đơn
+/* ---- Báo đơn về cho bạn: dán link Google Apps Script (xem hướng dẫn), để "" nếu chưa dùng ---- */
+const NOTIFY_URL = "";
+/* ===================== HẾT PHẦN CHỈNH SỬA ===================== */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const img = u => u ? `url('${esc(u).replace(/'/g, "%27")}')` : "";
+Object.entries(COLORS).forEach(([k, v]) => document.documentElement.style.setProperty("--" + k, v));
+if (SITE.favicon) $("favicon").href = SITE.favicon;
+document.title = SITE.name; $("siteName").textContent = SITE.name;
+$("footerText").innerHTML = `Liên hệ: Zalo ${esc(SITE.zalo)} · ${esc(SITE.email)}` + (SITE.facebook ? ` · <a href="${esc(SITE.facebook)}">Facebook</a>` : "");
+
+// Nền doodle nhẹ (hình tự vẽ: móng ngựa, cà rốt, sao, tim, bút chì, ê ke, bánh răng)
+const DOODLE = `<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" fill="none" stroke="${COLORS.clay}" stroke-opacity=".16" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M28 60v-14a20 20 0 1 1 40 0v14M28 60h10M58 60h10"/><circle cx="34" cy="44" r="1.5"/><circle cx="62" cy="44" r="1.5"/>
+<path d="M150 30l6 14 15 1-11 10 4 15-14-8-14 8 4-15-11-10 15-1z" stroke="${COLORS.mint}"/>
+<path d="M230 60c-14-14-30 6-14 22l14 14 14-14c16-16 0-36-14-22z" stroke="${COLORS.pink}"/>
+<path d="M50 170l26 8-8 26zM68 174l8-12M72 178l10-8"/><path d="M60 136l6-10 6 10" stroke="${COLORS.mint}"/>
+<path d="M170 140l50 50M164 148l50 50-12 4-46-46zM178 150l6-6" stroke="${COLORS.pink}"/>
+<circle cx="220" cy="230" r="14"/><circle cx="220" cy="230" r="5"/><path d="M220 208v8M220 244v8M198 230h8M234 230h8M204 214l6 6M230 240l6 6M236 214l-6 6M210 240l-6 6"/>
+<path d="M30 250l40-20v22z" stroke="${COLORS.mint}"/><path d="M110 250l4-30 6 4-6-16" stroke="${COLORS.pink}"/>
+</svg>`;
+document.body.style.backgroundImage = `url("data:image/svg+xml,${encodeURIComponent(DOODLE)}")`;
+
+/* ---------- Firebase (đăng nhập + lưu đơn) ---------- */
+let fb = null, user = null;
+const loadScript = src => new Promise((ok, no) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+async function initFirebase() {
+  if (!FIREBASE.apiKey) return;
+  try {
+    const b = "https://www.gstatic.com/firebasejs/10.12.2/";
+    await loadScript(b + "firebase-app-compat.js"); await loadScript(b + "firebase-auth-compat.js"); await loadScript(b + "firebase-firestore-compat.js");
+    firebase.initializeApp(FIREBASE);
+    fb = { auth: firebase.auth(), db: firebase.firestore() };
+    fb.auth.onAuthStateChanged(u => { user = u; $("authLink").textContent = u ? "Tài khoản" : "Đăng nhập"; route(true); });
+  } catch (e) { console.error(e); }
+}
+async function notify(o) {
+  if (!NOTIFY_URL) return;
+  try { await fetch(NOTIFY_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(o) }); } catch (e) {}
+}
+const isOwner = () => user && user.email === OWNER_EMAIL;
+
+/* ---------- Các trang ---------- */
+const docRow = d => `<div class="card row"><div><strong>${esc(d.title)}</strong><div class="muted">${esc(d.subject)} · ${esc(d.year)}</div></div>
+  <a class="btn small mint" href="${esc(d.link)}" target="_blank" rel="noopener">Tải về</a></div>`;
+// Thanh tiêu đề các trang con (Tài liệu, Bảng giá, Đặt vẽ...) dùng chung ảnh với trang chủ (HERO.image). HERO.image để "" thì dùng gradient.
+const head = t => `<div class="pagehead" style="${HERO.image ? `background-image:linear-gradient(180deg,rgba(59,36,32,.35),rgba(59,36,32,.65)),${img(HERO.image)};background-size:cover;background-position:center` : ""}"><div class="wrap"><h1>${esc(t)}</h1></div></div>`;
+const app = $("app");
+
+function home() {
+  app.innerHTML = `
+  <div class="hero" style="background-image:${img(HERO.image) || `linear-gradient(120deg,${COLORS.clay},${COLORS.pink} 60%,${COLORS.mint})`}">
+    <div class="wrap"><h1>${esc(HERO.title)}</h1><div class="bar"></div><p>${esc(HERO.tagline)}</p>
+    <a class="btn" href="#/dat-don">Đặt vẽ ngay</a><a class="btn mint" href="#/tai-lieu">Xem tài liệu</a></div></div>
+  <div class="wrap">
+    <section><h2>Tài liệu</h2><div class="grid">${CATEGORIES.map(c => {
+      const n = DOCS.filter(d => d.subject === c.name).length;
+      return `<a class="card cat" href="#/tai-lieu/${encodeURIComponent(c.name)}"><div class="pic" style="background-image:${[c.image, c.art].filter(Boolean).map(img).join(",")}">${c.image || c.art ? "" : c.emoji}</div>
+      <div class="txt"><h3 title="${esc(c.name)}">${esc(c.name)}</h3><div class="muted" title="${esc(c.desc)}">${esc(c.desc)}</div><span class="tag">${n} tài liệu</span></div></a>`; }).join("")}</div></section>
+    <section><h2>Nhận vẽ theo đơn</h2><div class="card row"><div><strong>Vẽ tay từ <span class="price">20.000đ</span></strong>
+      <div class="muted">Đáp án hướng dẫn tự vẽ từ 10.000đ</div></div><a class="btn" href="#/bang-gia">Xem bảng giá</a></div></section>
+  </div>`;
+}
+
+function docsPage(subject) {
+  const subjects = [...new Set(DOCS.map(d => d.subject))];
+  app.innerHTML = head("Tài liệu") + `<div class="wrap"><section>
+    <input id="q" placeholder="Tìm theo tên tài liệu" aria-label="Tìm tài liệu">
+    <div class="chips" id="chips"></div><div id="list"></div></section></div>`;
+  let cur = subject || "";
+  const draw = () => {
+    $("chips").innerHTML = ["", ...subjects].map(s => `<button class="chip ${s === cur ? "on" : ""}" data-s="${esc(s)}">${esc(s || "Tất cả")}</button>`).join("");
+    const q = $("q").value.trim().toLowerCase();
+    const l = DOCS.filter(d => d.title.toLowerCase().includes(q) && (!cur || d.subject === cur));
+    $("list").innerHTML = l.length ? l.map(docRow).join("") : `<p class="muted">Không tìm thấy tài liệu. Thử bỏ bộ lọc hoặc đổi từ khoá.</p>`;
+    document.querySelectorAll(".chip").forEach(b => b.onclick = () => { cur = b.dataset.s; draw(); });
+  };
+  $("q").oninput = draw; draw();
+}
+
+function pricePage() {
+  app.innerHTML = head("Bảng giá") + `<div class="wrap"><section>${PRICES.map(g => `<h2>${esc(g.group)}</h2><div class="grid">${g.items.map(i =>
+    `<div class="card"><h3>${esc(i.name)}</h3><div class="price">${esc(i.price)}</div><div class="muted">${esc(i.note)}</div></div>`).join("")}</div>`).join("<br>")}
+    <div class="notice">Giá chỉ để tham khảo, có thể thương lượng tuỳ độ khó và thời hạn.</div>
+    ${SAMPLES.length ? `<h2>Bài vẽ mẫu</h2><div class="gallery">${SAMPLES.map(s => `<img loading="lazy" src="${esc(s)}" alt="Bài vẽ mẫu">`).join("")}</div>` : ""}
+    <p><a class="btn" href="#/dat-don">Đặt vẽ ngay</a></p></section></div>`;
+}
+
+/* Ảnh đề bài đính kèm: nén về tối đa 1600px để gửi nhẹ */
+const MAX_IMG = 5;
+let orderFiles = [];   // { name, data: dataURL jpeg }
+const fileToJpeg = file => new Promise((ok, no) => {
+  const url = URL.createObjectURL(file), im = new Image();
+  im.onload = () => {
+    const k = Math.min(1, 1600 / Math.max(im.width, im.height)), c = document.createElement("canvas");
+    c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
+    const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height);
+    URL.revokeObjectURL(url); ok(c.toDataURL("image/jpeg", .82));
+  };
+  im.onerror = () => { URL.revokeObjectURL(url); no(new Error(file.name)); };
+  im.src = url;
+});
+
+function orderPage() {
+  app.innerHTML = head("Đặt vẽ kỹ thuật") + `<div class="wrap"><section><div class="card form">
+    ${user ? `<p class="muted">Đang đăng nhập: ${esc(user.email)}. Đơn sẽ lưu vào tài khoản để bạn theo dõi.</p>`
+           : `<p class="notice">Bạn chưa đăng nhập. Vẫn đặt được, nhưng đăng nhập thì sẽ theo dõi được trạng thái đơn. <a href="#/tai-khoan">Đăng nhập</a></p>`}
+    <label for="f_name">Tên của bạn *</label><input id="f_name" value="${esc(user?.displayName || "")}">
+    <label for="f_contact">Zalo / SĐT *</label><input id="f_contact">
+    <label for="f_kind">Loại bài</label><select id="f_kind">${KINDS.map(k => `<option>${esc(k)}</option>`).join("")}</select>
+    <label for="f_deadline">Hạn cần nhận</label><input id="f_deadline" type="date">
+    <label for="f_budget">Ngân sách dự kiến</label><input id="f_budget" placeholder="VD: 100.000đ">
+    <label for="f_note">Mô tả đề bài</label><textarea id="f_note" maxlength="1500" placeholder="Môn học, số bản vẽ, khổ giấy, yêu cầu riêng..."></textarea>
+    <label for="f_files">Ảnh đề bài đính kèm</label>
+    <label class="drop" id="drop" for="f_files">📎 Bấm để chọn ảnh hoặc kéo thả vào đây<small>Tối đa ${MAX_IMG} ảnh (JPG, PNG, WEBP)</small></label>
+    <input class="sr" id="f_files" type="file" accept="image/*" multiple>
+    <div class="thumbs" id="thumbs"></div>
+    <p><button class="btn" id="submit">Gửi đơn</button></p><div id="done"></div></div></section></div>`;
+  const drawThumbs = () => {
+    $("thumbs").innerHTML = orderFiles.map((f, i) => `<div class="thumb"><img src="${f.data}" alt="${esc(f.name)}"><button type="button" data-i="${i}" aria-label="Xoá ảnh">✕</button></div>`).join("");
+    document.querySelectorAll(".thumb button").forEach(b => b.onclick = () => { orderFiles.splice(+b.dataset.i, 1); drawThumbs(); });
+  };
+  const addFiles = async list => {
+    const imgs = [...list].filter(f => f.type.startsWith("image/"));
+    if (imgs.length < list.length) alert("Chỉ nhận file ảnh nhé.");
+    for (const f of imgs) {
+      if (orderFiles.length >= MAX_IMG) { alert(`Tối đa ${MAX_IMG} ảnh thôi nhé.`); break; }
+      try { orderFiles.push({ name: f.name.replace(/\.[^.]+$/, "") + ".jpg", data: await fileToJpeg(f) }); }
+      catch (e) { alert("Không đọc được ảnh: " + e.message); }
+    }
+    drawThumbs();
+  };
+  $("f_files").onchange = async e => { await addFiles(e.target.files); e.target.value = ""; };
+  const dz = $("drop");
+  ["dragenter", "dragover"].forEach(t => dz.addEventListener(t, e => { e.preventDefault(); dz.classList.add("over"); }));
+  ["dragleave", "drop"].forEach(t => dz.addEventListener(t, e => { e.preventDefault(); dz.classList.remove("over"); }));
+  dz.addEventListener("drop", e => addFiles(e.dataTransfer.files));
+  drawThumbs();
+
+  $("submit").onclick = async () => {
+    const name = $("f_name").value.trim(), contact = $("f_contact").value.trim();
+    if (!name || !contact) return alert("Nhập tên và Zalo/SĐT của bạn nhé.");
+    const code = "BV" + Math.random().toString(36).slice(2, 8).toUpperCase();
+    const o = { code, name, contact, kind: $("f_kind").value, deadline: $("f_deadline").value, budget: $("f_budget").value.trim(),
+                note: $("f_note").value.trim(), status: STATUSES[0], uid: user?.uid || null, email: user?.email || null };
+    $("submit").disabled = true;
+    try { if (fb && user) await fb.db.collection("orders").doc(code).set({ ...o, createdAt: firebase.firestore.FieldValue.serverTimestamp() }); }
+    catch (e) { console.error(e); }
+    const imgs = orderFiles.map(f => ({ name: f.name, type: "image/jpeg", data: f.data.split(",")[1] }));
+    await notify({ ...o, imageCount: imgs.length, images: imgs });
+    $("done").innerHTML = `<div class="notice"><strong>Đã nhận đơn.</strong> Mã ticket của bạn: <span class="price">${code}</span><br>
+      ${imgs.length ? (NOTIFY_URL ? `Đã gửi kèm ${imgs.length} ảnh đề bài.<br>` : `Ảnh đính kèm chưa gửi tự động được, bạn gửi ${imgs.length} ảnh đó qua Zalo nhé.<br>`) : ""}Gửi mã này kèm file đề (ảnh/PDF) cho mình qua Zalo để mình bắt đầu nhé.<br>
+      <a class="btn mint" href="https://zalo.me/${esc(SITE.zalo)}" target="_blank" rel="noopener">Mở Zalo</a></div>`;
+    orderFiles = []; $("thumbs").innerHTML = "";
+    if (navigator.clipboard) navigator.clipboard.writeText(`Mã đơn ${code} - ${name} - ${o.kind}`).catch(() => {});
+  };
+}
+
+function accountPage() {
+  if (!fb) { app.innerHTML = head("Tài khoản") + `<div class="wrap"><section><div class="notice">Đăng nhập chưa được bật. Điền phần FIREBASE trong file index.html để dùng (xem hướng dẫn).</div></section></div>`; return; }
+  if (!user) {
+    app.innerHTML = head("Đăng nhập") + `<div class="wrap"><section><div class="card">
+      <button class="btn mint" id="g">Đăng nhập bằng Google</button><hr>
+      <label for="em">Email</label><input id="em" type="email"><label for="pw">Mật khẩu (từ 6 ký tự)</label><input id="pw" type="password">
+      <p><button class="btn" id="li">Đăng nhập</button><button class="btn mint" id="su">Tạo tài khoản</button></p><div id="err" class="muted"></div></div></section></div>`;
+    const fail = e => $("err").textContent = "Không thành công: " + e.message;
+    $("g").onclick = () => fb.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(fail);
+    $("li").onclick = () => fb.auth.signInWithEmailAndPassword($("em").value, $("pw").value).catch(fail);
+    $("su").onclick = () => fb.auth.createUserWithEmailAndPassword($("em").value, $("pw").value).catch(fail);
+    return;
+  }
+  app.innerHTML = head("Tài khoản") + `<div class="wrap"><section><div class="row"><p>Xin chào <strong>${esc(user.displayName || user.email)}</strong></p>
+    <span>${isOwner() ? `<a class="btn small mint" href="#/admin">Quản lý đơn</a>` : ""}<button class="btn small" id="out">Đăng xuất</button></span></div>
+    <h2>Đơn của bạn</h2><div id="mine">Đang tải...</div></section></div>`;
+  $("out").onclick = () => fb.auth.signOut();
+  fb.db.collection("orders").where("uid", "==", user.uid).get().then(s => {
+    const l = s.docs.map(d => d.data()).sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+    $("mine").innerHTML = l.length ? l.map(o => `<div class="card row"><div><strong>${esc(o.code)}</strong> · ${esc(o.kind)}<div class="muted">Hạn ${esc(o.deadline || "chưa chọn")}</div></div><span class="tag">${esc(o.status)}</span></div>`).join("")
+      : `<p class="muted">Bạn chưa có đơn nào. <a href="#/dat-don">Đặt vẽ ngay</a></p>`;
+  }).catch(() => $("mine").textContent = "Không tải được đơn. Kiểm tra Firestore rules.");
+}
+
+function adminPage() {
+  if (!isOwner()) { app.innerHTML = head("Quản lý đơn") + `<div class="wrap"><section><p>Chỉ chủ web mới xem được trang này.</p></section></div>`; return; }
+  app.innerHTML = head("Quản lý đơn") + `<div class="wrap"><section><div class="scroll" id="all">Đang tải...</div></section></div>`;
+  fb.db.collection("orders").get().then(s => {
+    const l = s.docs.map(d => d.data()).sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+    $("all").innerHTML = `<table><tr><th>Mã</th><th>Khách</th><th>Yêu cầu</th><th>Trạng thái</th></tr>${l.map(o => `<tr><td>${esc(o.code)}</td>
+      <td>${esc(o.name)}<br>${esc(o.contact)}</td><td>${esc(o.kind)}, hạn ${esc(o.deadline)}, ${esc(o.budget)}<br>${esc(o.note)}</td>
+      <td><select data-c="${esc(o.code)}">${STATUSES.map(t => `<option ${t === o.status ? "selected" : ""}>${t}</option>`).join("")}</select></td></tr>`).join("")}</table>`;
+    document.querySelectorAll("select[data-c]").forEach(sel => sel.onchange = () => fb.db.collection("orders").doc(sel.dataset.c).update({ status: sel.value }));
+  });
+}
+
+/* ---------- Màn hình loading ---------- */
+const loader = $("loader"), wait = ms => new Promise(r => setTimeout(r, ms));
+$("ldPic").innerHTML = LOADER.image ? `<img src="${esc(LOADER.image)}" alt="">` : LOADER.emoji;
+loader.style.setProperty("--fade-in", LOADER.fade + "ms");
+let ldTimer, swapTimer;
+function hideLoader() { loader.classList.remove("on"); }
+// Chuyển trang: mờ dần vào loading -> (lúc đã phủ kín) đổi nội dung -> giữ chút -> mờ dần ra
+function showLoader(swap) {
+  clearTimeout(ldTimer); clearTimeout(swapTimer);
+  loader.classList.add("on");
+  swapTimer = setTimeout(swap, LOADER.fade);
+  ldTimer = setTimeout(hideLoader, LOADER.fade + LOADER.page);
+}
+// Lần đầu / F5: đợi đủ thời gian tối thiểu và đợi trang tải xong (tối đa 4 giây)
+const pageLoaded = new Promise(r => document.readyState === "complete" ? r() : window.addEventListener("load", r));
+Promise.all([wait(LOADER.first), Promise.race([pageLoaded, wait(4000)])]).then(() => { if (!ldTimer) hideLoader(); });
+
+/* ---------- Điều hướng ---------- */
+const routes = { "": home, "tai-lieu": docsPage, "bang-gia": pricePage, "dat-don": orderPage, "tai-khoan": accountPage, "admin": adminPage };
+function route(keepScroll) {
+  const p = decodeURIComponent(location.hash.slice(2)).split("/");
+  (routes[p[0]] || home)(p[1]);
+  document.querySelectorAll("nav [data-r]").forEach(a => a.classList.toggle("on", a.dataset.r === p[0]));
+  if (!keepScroll) window.scrollTo({ top: 0, behavior: "instant" });
+  navState();
+}
+function navState() {
+  const atHome = !(location.hash.slice(2)) ;
+  $("nav").classList.toggle("solid", !atHome || window.scrollY > 60);
+}
+window.addEventListener("hashchange", () => showLoader(() => route()));
+window.addEventListener("scroll", navState, { passive: true });
+route(); initFirebase();
+</script>
+</body>
+</html>
